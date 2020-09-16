@@ -49,25 +49,3 @@ else
     puts "合計料金：#{costs}"
   end
 end
-
-
-# if num_people >= 5 and plan2
-#   puts "#{num_people}名ですね。5名以上なので10％と割引をせせて頂きます。"
-#   costs = num_people * plan2 * 90/100
-#   puts "合計料金：#{costs}"
-# elsif num_people <= 4 and plan2
-#   puts "#{num_people}名ですね。"
-#   costs = num_people * plan2
-#   puts "合計料金：#{costs}"
-# end
-
-
-# if num_people >= 5 and plan == 3
-#   puts "#{num_people}名ですね。5名以上なので10％と割引をせせて頂きます。"
-#   costs = num_people * plan3 * 90/100
-#   puts "合計料金：#{costs}"
-# elsif num_people <= 4 and plan3
-#   puts "#{num_people}名ですね。"
-#   costs = num_people * plan3
-#   puts "合計料金：#{costs}"
-# end
