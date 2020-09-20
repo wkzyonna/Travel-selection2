@@ -1,5 +1,14 @@
 #ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-#内容
+#プラン定義
+#ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+plans = [
+  {place:"沖縄旅行", price:10000},
+  {place:"北海道旅行", price:20000},
+  {place:"九州旅行", price:15000},
+]
+
+#ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+#プラン選択
 #ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 puts <<~TEXT
 旅行プランを番号で選択してください
@@ -9,34 +18,41 @@ puts <<~TEXT
 TEXT
 
 plan_num = gets.to_i
-
-case plan_num
-when 1
-  travel(num:1, destination:"沖縄", price:10000)
-when 2
-  travel(num:2, destination:"北海道", price:20000)
-when 3
-  travel(num:3, destination:"九州", price:15000)
+plan = plans[plan_num - 1]
+if plan_num <= 3 && plan_num >= 1
+  puts "#{plan[:place]}ですね。"
 else
-  puts "1〜3番からお選びください"
+  puts "不適切な数字です。1〜3からお選び下さい。"
   exit
 end
 
-
 #ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-#メソッド
+#人数選択
 #ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-def travel(num:, destination:, price:)
-  puts "#{num}番の#{destination}旅行ですね。"
-  puts "人数を選択してください"
+puts "人数を選択してください"
 
-  num_people = gets.to_i
-  if num_people >= 5
+num_people = gets.to_i
+if num_people >= 5
   puts "#{num_people}名ですね。5名以上なので10％割引をさせて頂きます。"
-  costs = num_people * price * 90 / 100
-  else
-    puts "#{num_people}名ですね。"
-    costs = num_people * price
-  end
-  puts "合計料金：#{costs}"
+elsif num_people <= 4 && num_people >= 1
+  puts "#{num_people}名ですね。"
+else
+  puts <<~TEXT
+  不適切な数字です
+  1名以上から選択出来ます。
+  TEXT
+  exit
 end
+
+#ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+#合計
+#ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+def total_price(num_people, price)
+  if num_people >= 5
+    total_price = num_people * price * 90/100
+  else
+    total_price = num_people * price
+  end
+  puts "合計料金：#{total_price}"
+end
+total_price(num_people, plan[:price])
