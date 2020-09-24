@@ -13,7 +13,7 @@ plans = [
 
 puts "旅行プランを番号で選択してください"
 
-plans.each.with_index(1) do |plan,i,value|
+plans.each.with_index(1) do |plan,i|
   puts "#{i}.#{plan[:place]}(￥#{plan[:price]})"
 end
 
