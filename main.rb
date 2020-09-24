@@ -10,16 +10,16 @@ plans = [
 #ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 #プラン選択
 #ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-puts <<~TEXT
-旅行プランを番号で選択してください
-1. 沖縄旅行（¥10,000）
-2. 北海道旅行（¥20,000）
-3. 九州旅行（¥15,000）
-TEXT
+
+puts "旅行プランを番号で選択してください"
+
+plans.each.with_index(1) do |plan,i,value|
+  puts "#{i}.#{plan[:place]}(￥#{plan[:price]})"
+end
 
 plan_num = gets.to_i
-plan = plans[plan_num - 1]
 if plan_num <= 3 && plan_num >= 1
+  plan = plans[plan_num - 1]
   puts "#{plan[:place]}ですね。"
 else
   puts "不適切な数字です。1〜3からお選び下さい。"
