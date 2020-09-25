@@ -5,6 +5,7 @@ plans = [
   {place:"沖縄旅行", price:10000},
   {place:"北海道旅行", price:20000},
   {place:"九州旅行", price:15000},
+  {place:"奈良旅行", price:2000}
 ]
 
 #ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -18,7 +19,7 @@ plans.each.with_index(1) do |plan,i|
 end
 
 plan_num = gets.to_i
-if plan_num <= 3 && plan_num >= 1
+if plan_num >= plans.size && plan_num >= 1
   plan = plans[plan_num - 1]
   puts "#{plan[:place]}ですね。"
 else
